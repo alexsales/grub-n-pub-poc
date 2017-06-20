@@ -1,7 +1,6 @@
 node_modules/
 bower_components/
 e2e-tests/
-components/
 img/fresh-baguette.jpg
 img/spain-madrid-tapas.jpg
 karma.conf.js
