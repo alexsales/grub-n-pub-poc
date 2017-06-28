@@ -4,7 +4,7 @@
   "description": "Never eat alone again! An app to help you find others to dine with and chat about random stuff; no strings attached, just good company.",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "karma start karma.conf.js"
   },
   "keywords": [
     "Googla",
@@ -37,7 +37,7 @@
     "angular-scroll": "^1.0.1",
     "angular-ui-router": "^1.0.3",
     "angularfire": "^2.3.0",
-    "firebase": "^3.9.0",
+    "firebase": "^4.1.2",
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
     "materialize-clockpicker": "^1.0.1",
@@ -58,7 +58,12 @@
     "gulp-uglify": "^2.1.2",
     "gulp-watch": "^4.3.11",
     "http-server": "^0.10.0",
+    "jasmine-core": "^2.6.4",
     "jshint": "^2.9.4",
+    "karma": "^1.7.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-cli": "^1.0.1",
+    "karma-jasmine": "^1.1.0",
     "lodash": "^4.17.4",
     "minimatch": "^3.0.4",
     "semver": "^5.3.0"
