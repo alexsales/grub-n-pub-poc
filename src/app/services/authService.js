@@ -10,7 +10,7 @@
         var user = null;
 
         function setCurrentUser(_firebaseUser) {
-            // $log.info('Current user: ', _firebaseUser);
+            $log.info('Current user: ', _firebaseUser);
             user = _firebaseUser;
         }
 
