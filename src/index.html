@@ -27,10 +27,10 @@
             });
         </script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="/js-vendors/jquery-1.11.2.min.js"><\/script>')</script>
-        <script src="/js-vendors/modernizr-2.8.3.min.js"></script>
+        <script>window.jQuery || document.write('<script src="/jsVendors/jquery-1.11.2.min.js"><\/script>')</script>
+        <script src="/jsVendors/modernizr-2.8.3.min.js"></script>
     </head>
-    <body ng-app="myGrub" ng-controller="MyGrubCtrl as myGrubVM">
+    <body ng-app="myGrubApp" ng-controller="MyGrubAppCtrl as myGrubAppVM">
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -38,33 +38,20 @@
         <header>
             <nav class="z-depth-0">
                 <div class="nav-wrapper container">
-                    <a href="#" class="brand-logo right mg-logo">LetsGrub</a>
                     <ul id="nav-mobile" class="left hide-on-med-and-down">
-                        <li><a href="sass.html">Sass</a></li>
-                        <li><a href="badges.html">Components</a></li>
-                        <li><a href="collapsible.html">JavaScript</a></li>
+                        <li><a ui-sref="browse">Browse (POO)r's</a></li>
+                        <li><a ui-sref="inbox">Inbox</a></li>
+                        <li><a ui-sref="userProfile">Profile</a></li>
+                        <li><a ng-click="myGrubAppVM.login()">Login</a></li>
+                        <li><a ng-click="myGrubAppVM.logout()">Logout</a></li>
                     </ul>
+                    <a ui-sref="home" class="brand-logo right mg-logo">LetsGrub</a>
                 </div>
             </nav>
         </header>
 
-        <main>
-            <section>
-                <div class="mg-hero">
-                    {{ myGrubVM.hi }}
-                </div>            
-            </section>
+        <div ui-view></div>
 
-            <section class="section">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s4 mg-col">Some content</div>
-                        <div class="col s4 mg-col">Some content</div>
-                        <div class="col s4 mg-col">Some content</div>
-                    </div>
-                </div>
-            </section>
-        </main>
         <footer class="page-footer">
             <div class="container">
                 <div class="row">
@@ -111,9 +98,17 @@
         <script src="/node_modules/firebase/firebase-messaging.js"></script>
         <script src="/node_modules/firebase/firebase-storage.js"></script>
         <script src="/node_modules/angularfire/dist/angularfire.js"></script>
-        <script src="/js-vendors/firebase-init.js"></script>
+        <script src="/jsVendors/firebase-init.js"></script>
 
-        <script src="app/main-vanilla.js"></script>
-        <script src="app/app-angular.js"></script>
+        <!-- custom scripts -->
+        <script src="app/mainVanilla.js"></script>
+        <script src="app/appAngular.js"></script>
+
+        <!-- services -->
+        <script src="app/services/authService.js"></script>
+
+        <!-- ui-route controllers -->
+        <script src="app/home/HomeCtrl.js"></script>        
+        <script src="app/userProfile/UserProfileCtrl.js"></script>        
     </body>
 </html>
