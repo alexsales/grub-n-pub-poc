@@ -4,11 +4,18 @@
     
     angular
         .module('myGrubApp')
-        .controller('HomeCtrl', HomeCtrl);
+        .controller('HomeCtrl', ['dataService', HomeCtrl]);
 
-    function HomeCtrl() {
+    function HomeCtrl(dataService) {     
         var vm = this;
-        vm.hi = 'howdy3';        
+        vm.data = null;
+
+        vm.controllerName = 'HomeCtrl as homeVM';
+        
+        dataService.getPublicData().then(function(res) {
+            vm.data = res;
+            console.log(vm.data);
+        });
     }
 
 })();

@@ -77,7 +77,7 @@
 
             expect(authService.getCurrentUser().email).toEqual('jennikins813@yahoo.com');
             expect(promiseData.$$state.value.email).toEqual('jennikins813@yahoo.com');
-            console.log('test - userProfile IS resolved: ' + angular.mock.dump($log.info.logs));
+            // console.log('test - userProfile IS resolved: ' + angular.mock.dump($log.info.logs));
         });
     });
 
@@ -131,7 +131,7 @@
             promiseData = authService.isUserAuthenticated();
             expect(authService.getCurrentUser()).toEqual(null);
             expect(promiseData.$$state.value.email).toEqual(undefined);
-            console.log('test - userProfile IS NOT resolved: ' + angular.mock.dump($log.info.logs));
+            // console.log('test - userProfile IS NOT resolved: ' + angular.mock.dump($log.info.logs));
         });
     });
 

@@ -18,6 +18,10 @@
                 });
         };
         vm.logout = function() {
+            var uid = $firebaseAuth().$getAuth().uid;
+            var dataRef = firebase.database().ref('c_prvt/' + uid);
+
+            dataRef.off();
             $firebaseAuth().$signOut();
             console.log($firebaseAuth().$getAuth());
         };
@@ -39,20 +43,35 @@
                 controller: 'UserProfileCtrl',
                 controllerAs: 'userProfileVM',
                 resolve: {
-                    isUserAuthenticated: ['$q', '$location', '$state', 'authService', function($q, $location, $state, authService) {
+                    isUserAuthenticated: ['$q', '$state', '$location', 'authService', function($q, $state, $location, authService) {
 
                         return authService.isUserAuthenticated()
                             .then(function(usr) {
-                                console.log('resolved: ', usr);
-
+                                // console.log('resolved isUserAuthenticated: ', usr);
                                 return usr;
                             })
                             .catch(function(err) {
-                                console.log('rejected: ', err);
-
+                                // console.log('rejected isUserAuthenticated: ', err);
                                 $location.url('/home');
                                 $state.go('home');
                             });
+
+                    }],
+                    authUserPrvtData: ['isUserAuthenticated', 'dataService', function(isUserAuthenticated, dataService) {
+
+                        if (isUserAuthenticated) {
+                            var uid = isUserAuthenticated.uid;
+                            var userDataPromise = dataService.getPrivateData(uid);
+                            console.log(userDataPromise);
+
+                            userDataPromise.then(function(snapshot) {
+                                console.log(snapshot);
+                                return snapshot;
+                            });
+
+                            return userDataPromise;
+                        }
+
                     }]
                 }
             });
@@ -74,6 +93,7 @@
         $rootScope.authObj.$onAuthStateChanged(function(firebaseUser) {
             authService.setCurrentUser(firebaseUser);
             if (firebaseUser === null) {
+
                 $state.go('home');
             }
         });
