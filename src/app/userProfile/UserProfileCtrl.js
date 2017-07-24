@@ -7,8 +7,8 @@
         .controller('UserProfileCtrl', ['isUserAuthenticated', 'authUserPrvtData', UserProfileCtrl]);
 
     function UserProfileCtrl(isUserAuthenticated, authUserPrvtData) {
-        // console.log(isUserAuthenticated);
-        // console.log(authUserPrvtData);
+        console.log(isUserAuthenticated);
+        console.log(authUserPrvtData);
 
         var vm = this;
         // var uid = isUserAuthenticated.uid;
