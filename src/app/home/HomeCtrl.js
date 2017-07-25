@@ -8,6 +8,7 @@
 
     function HomeCtrl(dataService) {     
         var vm = this;
+        vm.hi = 'howdy homeCtrl';
         vm.data = null;
 
         vm.controllerName = 'HomeCtrl as homeVM';
