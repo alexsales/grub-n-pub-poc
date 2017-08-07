@@ -18,24 +18,42 @@ main {
     flex: 1 0 auto;
 }
 
-/* --- Nav and Logo --- */
-/*nav .mg-logo {
-    padding-right: 0.5em;
-}*/
-
 /* -- Hero -- */
-section .mg-hero {
+/*section .mg-hero {
     width: 100%;
-    height: 20rem;
+    height: 15em;
     background-color: #ccc;
     text-align: center;
-    line-height: 20rem;
-}
+    line-height: 20em;
+    overflow: hidden;
+}*/
+
+/*section .mg-hero .carousel-slider.slider-container {
+    height: 15em;
+}*/
 
 /* -- Promos -- */
 section .mg-col {
     background-color: #aabbc9;
     text-align: center;
-
 }
 
+/* -- Media Queries -- */
+/*@media (max-width: 805px) {
+    section .mg-hero .carousel-item.img-container {
+        position: relative;
+        top: -1em;
+    }
+} */
+
+/*@media (max-width: 805px) {
+    section .mg-hero .carousel-item.img-container1 {
+        content: url('img/hero1-805px.jpg');
+    }
+    section .mg-hero .carousel-item.img-container2 {
+        content: url('img/hero2-805px.jpg');
+    }
+    section .mg-hero .carousel-item.img-container3 {
+        content: url('img/hero3-805px.jpg');
+    }
+} */

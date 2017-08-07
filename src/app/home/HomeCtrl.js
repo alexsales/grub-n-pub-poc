@@ -17,6 +17,8 @@
             vm.data = res;
             console.log(vm.data);
         });
+
+        $('.carousel.carousel-slider').carousel({fullWidth: true});
     }
 
 })();

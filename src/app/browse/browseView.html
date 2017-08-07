@@ -1,0 +1,48 @@
+<section class="section">
+    <div class="container">
+        <div class="row container--howto">
+            <h4 class="center-align">How to "Never Eat Alone"</h4>
+            <p class="center-align">Create lifelong friendships, find a mentor, pitch an idea, or just come enjoy a casual conversation ... in your lunch break/during happy hour/after a study break/or after a workout.</p>
+            <p class="center-align">When you Dine.With.Me., you'll never eat alone.</p>
+        </div>
+        <!-- <div>
+            {{ browseVM.controllerName }}
+            <img ng-src="{{ browseVM.portrait }}">
+        </div> -->
+        <!-- <div class="row">
+            <div class="col s12 m4 center-align">
+                <i class="fa fa-pencil-square-o fa-5x"></i>
+                <h5>Signup</h5>
+                <p>Create a profile and tell us about your interests.</p>
+            </div>
+            <div class="col s12 m4 center-align">
+                <i class="fa fa-search fa-5x"></i>
+                <h5>Browse</h5>
+                <p>Find users by zip code or city, state.</p>
+            </div>        
+            <div class="col s12 m4 center-align">
+                <i class="fa fa-clock-o fa-5x"></i>
+                <h5>Schedule</h5>
+                <p>Agree on a time and place to meet.</p>
+            </div>        
+        </div> -->
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div ng-repeat="user in browseVM.usersList">
+            <div class="card">
+                <div class="card-image">
+                    <img firebase-src="{{ user.userImg_portraitPath }}">
+                    <span class="card-title">Card Title</span>
+                </div>
+                <div class="card-content">
+                    <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                </div>
+                <div class="card-action">
+                    <a href="#">This is a link</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

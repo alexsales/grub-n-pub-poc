@@ -37,6 +37,49 @@
                 controller: 'HomeCtrl',
                 controllerAs: 'homeVM'
             })
+            .state('browse', {
+                url: '/browse',
+                templateUrl: 'app/browse/browseView.html',
+                controller: 'BrowseCtrl',
+                controllerAs: 'browseVM',
+                resolve: {
+                    publicData: ['dataService' , function(dataService) {
+                        return dataService.getPublicData();
+                            // .then(function(res) {
+                            //     console.log('publicData resolve ' + res);
+                            //     return res;
+                            //     // vm.publicData = res;
+                            //     // console.log(vm.data);
+                            // });
+                    }]
+                    // publicDataWithImages: ['dataService', 'publicData', function(dataService, publicData) {
+                    //     return dataService.getAndAddPublicUserImageData(publicData)
+                    //         .then(function(modifiedUsersList) {
+                    //             console.log(modifiedUsersList);
+
+                    //             // var usersList = [];
+                    //             // modifiedUsersList.forEach(function(user) {
+                    //             //     user.landscapeImgDownloadURL
+                    //             //         .then(function(url) {
+                    //             //             // console.log(url);
+                    //             //             user.landscapeImgDownloadURL = url;
+                    //             //         });
+                    //             //     user.portraitImgDownloadURL
+                    //             //         .then(function(url) {
+                    //             //             // console.log(url);
+                    //             //             user.portraitImgDownloadURL = url;
+                    //             //         });
+                    //             //     console.log(user);
+                    //             //     usersList.push(user);
+                    //             //     // $scope.$apply();
+                    //             // });
+                    //             // console.log(usersList);
+                    //             // return usersList;
+                    //             return modifiedUsersList;
+                    //         });
+                    // }]
+                }
+            })
             .state('userProfile', {
                 url: '/userProfile',
                 templateUrl: 'app/userProfile/userProfileView.html',
@@ -92,10 +135,10 @@
         $rootScope.authObj = $firebaseAuth();
         $rootScope.authObj.$onAuthStateChanged(function(firebaseUser) {
             authService.setCurrentUser(firebaseUser);
-            if (firebaseUser === null) {
+            // if (firebaseUser === null) {
 
-                $state.go('home');
-            }
+            //     $state.go('home');
+            // }
         });
 
     }

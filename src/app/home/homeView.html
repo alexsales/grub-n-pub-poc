@@ -1,14 +1,60 @@
-<section>
-    <div class="mg-hero">
-        {{ homeVM.hi }}
-    </div>
-</section>
+<div class="carousel carousel-slider slider-container">
+    <!-- <a class="carousel-item img_container1" href="#one!"><img class="img-responsive" src="img/hero1-1500px.jpg"></a>
+    <a class="carousel-item img-container2" href="#two!"><img class="img-responsive" src="img/hero2-1500px.jpg"></a>
+    <a class="carousel-item img-container3" href="#three!"><img class="img-responsive" src="img/hero3-1500px.jpg"></a> -->
+    <a class="carousel-item img_container1" href="#one!">    
+        <picture>
+            <source media="(max-width: 600px)" srcset="img/hero1-400px.jpg 400w" />
+            <source media="(max-width: 992px)" srcset="img/hero1-805px.jpg 805w" />
+            <source media="(min-width: 993px)" srcset="img/hero1-1500px.jpg 1500w" />
+            <img src="img/hero1-1500px.jpg" alt="still life" />
+        </picture>
+    </a>
+    <a class="carousel-item img_container2" href="#two!">    
+        <picture>
+            <source media="(max-width: 600px)" srcset="img/hero2-400px.jpg 400w" />
+            <source media="(max-width: 992px)" srcset="img/hero2-805px.jpg 805w" />
+            <source media="(min-width: 993px)" srcset="img/hero2-1500px.jpg 1500w" />
+            <img src="img/hero2-1500px.jpg" alt="still life" />
+        </picture>
+    </a>
+    <a class="carousel-item img_container3" href="#three!">    
+        <picture>
+            <source media="(max-width: 600px)" srcset="img/hero3-400px.jpg 400w" />
+            <source media="(max-width: 992px)" srcset="img/hero3-805px.jpg 805w" />
+            <source media="(min-width: 993px)" srcset="img/hero3-1500px.jpg 1500w" />
+            <img src="img/hero3-1500px.jpg" alt="still life" />
+        </picture>
+    </a>
+</div>
 <section class="section">
     <div class="container">
+        <!-- <div class="row">
+            <div class="col s12 m4 mg-col">Some content</div>
+            <div class="col s12 m4 mg-col">Some content</div>
+            <div class="col s12 m4 mg-col">Some content</div>
+        </div> -->
+        <div class="row container--howto">
+            <h4 class="center-align">How to "Never Eat Alone"</h4>
+            <p class="center-align">Create lifelong friendships, find a mentor, pitch an idea, or just come enjoy a casual conversation ... in your lunch break/during happy hour/after a study break/or after a workout.</p>
+            <p class="center-align">When you Dine.With.Me., you'll never eat alone.</p>
+        </div>
         <div class="row">
-            <div class="col s4 mg-col">Some content</div>
-            <div class="col s4 mg-col">Some content</div>
-            <div class="col s4 mg-col">Some content</div>
+            <div class="col s12 m4 center-align">
+                <i class="fa fa-pencil-square-o fa-5x"></i>
+                <h5>Signup</h5>
+                <p>Create a profile and tell us about your interests.</p>
+            </div>
+            <div class="col s12 m4 center-align">
+                <i class="fa fa-search fa-5x"></i>
+                <h5>Browse</h5>
+                <p>Find users by zip code or city, state.</p>
+            </div>        
+            <div class="col s12 m4 center-align">
+                <i class="fa fa-clock-o fa-5x"></i>
+                <h5>Schedule</h5>
+                <p>Agree on a time and place to meet.</p>
+            </div>        
         </div>
     </div>
 </section>
