@@ -1,0 +1,330 @@
+<section class="container login-registration">
+        <form class="form-container">
+            <h5>Already have an account? Simply login:</h5>
+            <div class="row">
+                <div class="col m4 input-field">
+                    <input type="email" class="validate" id="email">
+                    <label for="email">email</label>
+                </div>
+                <div class="col m4 input-field">
+                    <input type="password" class="validate" id="password">
+                    <label for="password">password</label>
+                </div>
+                <div class="col m4">
+                    <button type="submit" name="login-btn" class="btn z-depth-0 btn-submit-custom">Login</button>
+                </div>
+            </div>
+        </form>
+        <form class="form-container">
+            <h5>New user? Create an account:</h5>
+            <h6>What are 3 things you know well?</h6>
+            <div class="row">
+                <div class="col m4 input-field">
+                    <input type="text" id="user-interest1">
+                    <label for="use-interest1">e.g. finance</label>
+                </div>
+                <div class="col m4 input-field">
+                    <input type="text" id="user-interest2">
+                    <label for="user-interest2"></label>
+                </div>
+                <div class="col m4 input-field">
+                    <input type="text" id="user-interest3">
+                    <label for="user-interest3"></label>
+                </div>
+            </div>
+            <h6>What are 3 things you DON'T know well, but are interested in?</h6>
+            <div class="row">
+                <div class="col m4 input-field">
+                    <input type="text" id="user-interest4">
+                    <label for="user-interest4">e.g. gardening</label>
+                </div>
+                <div class="col m4 input-field">
+                    <input type="text" id="user-interest5">
+                    <label for="user-interest5"></label>
+                </div>
+                <div class="col m4 input-field">
+                    <input type="text" id="user-interest6">
+                    <label for="user-interest6"></label>
+                </div>
+            </div>
+            <h6>Your dining motto (or your mojo in &lt;70 characters):</h6>
+            <div class="row">
+                <div class="col s12 input-field">
+                    <input type="text" id="userMotto" maxLength="70">
+                    <label for="userMotto">e.g. I live my life according to the tenets of the SEE-food diet!</label>
+                </div>
+            </div>
+            <h6>When are you available to LetsGrub?</h6>
+            <div class="row">
+                <div class="col s12">
+                    <div class="sunday-availability">
+                        <fieldset>
+                            <div class="row">
+                                <legend class="col s2 right-align">Sunday:</legend>
+                                <div class="col s10">
+                                    <div class="input-field">
+                                        <input type="checkbox" id="sunday-breakfast">
+                                        <label for="sunday-breakfast">breakfast</label>
+                                    </div>
+                                    <div class="input-field">
+                                        <input type="checkbox" id="sunday-brunch">
+                                        <label for="sunday-brunch">brunch</label>
+                                    </div>
+                                    <div class="input-field">
+                                        <input type="checkbox" id="sunday-lunch">
+                                        <label for="sunday-lunch">lunch</label>
+                                    </div>                    
+                                    <div class="input-field">
+                                        <input type="checkbox" id="sunday-happy-hour">
+                                        <label for="sunday-happy-hour">happy hour</label>
+                                    </div>
+                                    <div class="input-field">
+                                        <input type="checkbox" id="sunday-dinner">
+                                        <label for="sunday-dinner">dinner</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="monday-availability">
+                        <fieldset>
+                            <div class="row">
+                                <legend class="col s2 right-align">Monday:</legend>
+                                <div class="col s10">
+                                    <div class="input-field">
+                                        <input type="checkbox" id="monday-breakfast">
+                                        <label for="monday-breakfast">breakfast</label>
+                                    </div>
+                                    <div class="input-field">
+                                        <input type="checkbox" id="monday-brunch">
+                                        <label for="monday-brunch">brunch</label>
+                                    </div>
+                                    <div class="input-field">
+                                        <input type="checkbox" id="monday-lunch">
+                                        <label for="monday-lunch">lunch</label>
+                                    </div>                    
+                                    <div class="input-field">
+                                        <input type="checkbox" id="monday-happy-hour">
+                                        <label for="monday-happy-hour">happy hour</label>
+                                    </div>
+                                    <div class="input-field">
+                                        <input type="checkbox" id="monday-dinner">
+                                        <label for="monday-dinner">dinner</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="tuesday-availability">
+                        <fieldset>
+                            <div class="row">
+                                <legend class="col s2 right-align">Tuesday:</legend>
+                                <div class="col s10">
+                                    <div class="input-field">
+                                        <input type="checkbox" id="tuesday-breakfast">
+                                        <label for="tuesday-breakfast">breakfast</label>
+                                    </div>
+                                    <div class="input-field">
+                                        <input type="checkbox" id="tuesday-brunch">
+                                        <label for="tuesday-brunch">brunch</label>
+                                    </div>
+                                    <div class="input-field">
+                                        <input type="checkbox" id="tuesday-lunch">
+                                        <label for="tuesday-lunch">lunch</label>
+                                    </div>                    
+                                    <div class="input-field">
+                                        <input type="checkbox" id="tuesday-happy-hour">
+                                        <label for="tuesday-happy-hour">happy hour</label>
+                                    </div>
+                                    <div class="input-field">
+                                        <input type="checkbox" id="tuesday-dinner">
+                                        <label for="tuesday-dinner">dinner</label>
+                                    </div>
+                                </div>
+                            </div>                    
+                        </fieldset>
+                    </div>
+                    <div class="wednesday-availability">
+                        <fieldset>
+                            <div class="row">
+                                <legend class="col s2 right-align">Wednesday:</legend>
+                                <div class="col s10">
+                                    <div class="input-field">
+                                        <input type="checkbox" id="wednesday-breakfast">
+                                        <label for="wednesday-breakfast">breakfast</label>
+                                    </div>
+                                    <div class="input-field">
+                                        <input type="checkbox" id="wednesday-brunch">
+                                        <label for="wednesday-brunch">brunch</label>
+                                    </div>
+                                    <div class="input-field">
+                                        <input type="checkbox" id="wednesday-lunch">
+                                        <label for="wednesday-lunch">lunch</label>
+                                    </div>                    
+                                    <div class="input-field">
+                                        <input type="checkbox" id="wednesday-happy-hour">
+                                        <label for="wednesday-happy-hour">happy hour</label>
+                                    </div>
+                                    <div class="input-field">
+                                        <input type="checkbox" id="wednesday-dinner">
+                                        <label for="wednesday-dinner">dinner</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="thursday-availability">
+                        <fieldset>
+                            <div class="row">
+                                <legend class="col s2 right-align">Thursday:</legend>
+                                <div class="col s10">
+                                    <div class="input-field">
+                                        <input type="checkbox" id="thursday-breakfast">
+                                        <label for="thursday-breakfast">breakfast</label>
+                                    </div>
+                                    <div class="input-field">
+                                        <input type="checkbox" id="thursday-brunch">
+                                        <label for="thursday-brunch">brunch</label>
+                                    </div>
+                                    <div class="input-field">
+                                        <input type="checkbox" id="thursday-lunch">
+                                        <label for="thursday-lunch">lunch</label>
+                                    </div>                    
+                                    <div class="input-field">
+                                        <input type="checkbox" id="thursday-happy-hour">
+                                        <label for="thursday-happy-hour">happy hour</label>
+                                    </div>
+                                    <div class="input-field">
+                                        <input type="checkbox" id="thursday-dinner">
+                                        <label for="thursday-dinner">dinner</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="friday-availability">
+                        <fieldset>
+                            <div class="row">
+                                <legend class="col s2 right-align">Friday:</legend>
+                                <div class="col s10">
+                                    <div class="input-field">
+                                        <input type="checkbox" id="friday-breakfast">
+                                        <label for="friday-breakfast">breakfast</label>
+                                    </div>
+                                    <div class="input-field">
+                                        <input type="checkbox" id="friday-brunch">
+                                        <label for="friday-brunch">brunch</label>
+                                    </div>
+                                    <div class="input-field">
+                                        <input type="checkbox" id="friday-lunch">
+                                        <label for="friday-lunch">lunch</label>
+                                    </div>                    
+                                    <div class="input-field">
+                                        <input type="checkbox" id="friday-happy-hour">
+                                        <label for="friday-happy-hour">happy hour</label>
+                                    </div>
+                                    <div class="input-field">
+                                        <input type="checkbox" id="friday-dinner">
+                                        <label for="friday-dinner">dinner</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="saturday-availability">
+                        <fieldset>
+                            <div class="row">
+                                <legend class="col s2 right-align">Saturday:</legend>
+                                <div class="col s10">
+                                    <div class="input-field">
+                                        <input type="checkbox" id="saturday-breakfast">
+                                        <label for="saturday-breakfast">breakfast</label>
+                                    </div>
+                                    <div class="input-field">
+                                        <input type="checkbox" id="saturday-brunch">
+                                        <label for="saturday-brunch">brunch</label>
+                                    </div>
+                                    <div class="input-field">
+                                        <input type="checkbox" id="saturday-lunch">
+                                        <label for="saturday-lunch">lunch</label>
+                                    </div>                    
+                                    <div class="input-field">
+                                        <input type="checkbox" id="saturday-happy-hour">
+                                        <label for="saturday-happy-hour">happy hour</label>
+                                    </div>
+                                    <div class="input-field">
+                                        <input type="checkbox" id="saturday-dinner">
+                                        <label for="saturday-dinner">dinner</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <h6>Upload a profile picture (jpg/png only, max file size: 3mb):</h6>
+            <div class="row">
+                <div class="col s12">
+                    <fieldset>
+                        <div class="file-field input-field">
+                            <div class="row file-field-custom">
+                                <div class="col s1 offset-s1">
+                                    <div class="btn z-depth-0">
+                                        <span for="file-upload">File</span>
+                                        <input type="file" id="file-upload">
+                                    </div>
+                                </div>
+                                <div class="col s6">
+                                    <div class="file-path-wrapper file-path-wrapper-margin-left">
+                                        <input type="text" id="file-upload" placeholder="Upload one or more files">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <h6>Just the basics:</h6>
+            <div class="row">
+                <div class="col m4 input-field">
+                    <input type="text" id="user-first-name">
+                    <label for="user-first-name">first name</label>
+                </div>
+                <div class="col m4 input-field">
+                    <input type="text" id="user-last-name">
+                    <label for="user-last-name">last name</label>
+                </div>
+                <div class="col m4 input-field">
+                    <input type="text" id="user-birthdate" class="datepicker">
+                    <label for="user-birthdate">birthdate (mm/dd/yyyy)</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col m4 input-field">
+                    <input type="text" id="user-city">
+                    <label for="user-city">city</label>
+                </div>
+                <div class="col m4 input-field">
+                    <input type="text" id="user-state">
+                    <label for="user-state">state</label>
+                </div>
+                <div class="col m4 input-field">
+                    <input type="text" id="user-zip">
+                    <label for="user-zip">zip</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col m4 input-field">
+                    <input type="email" id="user-email">
+                    <label for="user-email">email</label>
+                </div>
+                <div class="col m4 input-field">
+                    <input type="password" id="user-password">
+                    <label for="user-password">password</label>
+                </div>
+                <div class="col m4">
+                    <button type="submit" name="signup-btn" class="btn z-depth-0 btn-submit-custom">Signup</button>
+                </div>
+            </div>
+        </form>
+</section>
