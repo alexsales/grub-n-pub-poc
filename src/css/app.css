@@ -18,19 +18,70 @@ main {
     flex: 1 0 auto;
 }
 
-/* -- Hero -- */
-/*section .mg-hero {
-    width: 100%;
-    height: 15em;
-    background-color: #ccc;
-    text-align: center;
-    line-height: 20em;
-    overflow: hidden;
-}*/
+/* -- Cards -- */
+div.masonry-brick .card--specs {
+    width: 300px;
+}
 
-/*section .mg-hero .carousel-slider.slider-container {
-    height: 15em;
-}*/
+div.masonry-brick .card-title--specs {
+    line-height: .85em;
+}
+
+div.masonry-brick .zip--codes {
+    display: inline-block;
+}
+
+div.card .card-action--align a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
+    margin-right: 0;
+    cursor: pointer;
+}
+
+blockquote {
+  border-left: 0 solid #ccc;
+  margin-top: 0;
+  padding-left: 0;
+  quotes: "\201C""\201D""\2018""\2019";
+  font-family: 'Roboto Condensed', 'Droid Sans', Tahoma, sans-serif;
+  line-height: 1em;
+  font-size: 1.15em;
+}
+
+blockquote:before {
+  color: #d1d1d1;
+  content: open-quote;
+  font-size: 3.5em;
+  line-height: .25em;
+  margin-right: .1em;
+  vertical-align: -0.45em;
+}
+
+blockquote:after {
+  color: #d1d1d1;
+  content: close-quote;
+  font-size: 2.5em;
+  margin-left: .1em;
+  vertical-align: -0.45em;
+}
+
+ul.availability {
+    position: relative;
+    bottom: -1.25em;
+    margin-bottom: 0;
+}
+
+ul.availability li {
+    display: inline-block;
+}
+
+ul.availability a {
+    display: inline-block;
+    background-color: #ffab40;
+    color: #222;
+    padding: .1em;
+    margin: .1em 0 0;
+    cursor: pointer;
+
+}
 
 /* -- Promos -- */
 section .mg-col {
@@ -38,22 +89,89 @@ section .mg-col {
     text-align: center;
 }
 
-/* -- Media Queries -- */
-/*@media (max-width: 805px) {
-    section .mg-hero .carousel-item.img-container {
-        position: relative;
-        top: -1em;
-    }
-} */
+/* -- Login: Form --*/
+section.login-registration .form-container {
+    margin: 5rem 0 3rem;
+}
 
-/*@media (max-width: 805px) {
-    section .mg-hero .carousel-item.img-container1 {
-        content: url('img/hero1-805px.jpg');
-    }
-    section .mg-hero .carousel-item.img-container2 {
-        content: url('img/hero2-805px.jpg');
-    }
-    section .mg-hero .carousel-item.img-container3 {
-        content: url('img/hero3-805px.jpg');
-    }
-} */
+section.login-registration .form-container:nth-child(2) {
+    margin: 0 0 4rem;
+}
+
+/* -- Login: Availability -- */
+div.sunday-availability,
+div.monday-availability,
+div.tuesday-availability,
+div.wednesday-availability,
+div.thursday-availability,
+div.friday-availability,
+div.saturday-availability {
+    margin-top: 1.5rem;
+}
+
+div.sunday-availability .input-field,
+div.monday-availability .input-field,
+div.tuesday-availability .input-field,
+div.wednesday-availability .input-field,
+div.thursday-availability .input-field,
+div.friday-availability .input-field,
+div.saturday-availability .input-field {
+    margin: 0 1em;
+}
+
+div.sunday-availability [type="checkbox"] + label,
+div.monday-availability [type="checkbox"] + label,
+div.tuesday-availability [type="checkbox"] + label,
+div.wednesday-availability [type="checkbox"] + label,
+div.thursday-availability [type="checkbox"] + label,
+div.friday-availability [type="checkbox"] + label,
+div.saturday-availability [type="checkbox"] + label {
+    padding-left: 25px;
+}
+
+div.sunday-availability fieldset legend,
+div.sunday-availability fieldset .input-field,
+div.sunday-availability .input-field label,
+div.monday-availability fieldset legend,
+div.monday-availability fieldset .input-field,
+div.monday-availability .input-field label,
+div.tuesday-availability fieldset legend,
+div.tuesday-availability fieldset .input-field,
+div.tuesday-availability .input-field label,
+div.wednesday-availability fieldset legend,
+div.wednesday-availability fieldset .input-field,
+div.wednesday-availability .input-field label,
+div.thursday-availability fieldset legend,
+div.thursday-availability fieldset .input-field,
+div.thursday-availability .input-field label,
+div.friday-availability fieldset legend,
+div.friday-availability fieldset .input-field,
+div.friday-availability .input-field label,
+div.saturday-availability fieldset legend,
+div.saturday-availability fieldset .input-field,
+div.saturday-availability .input-field label {
+    display: inline-block;
+    margin-top: 0;
+    top: 0;
+}
+
+/* -- Login: File Field -- */
+form div.file-field .file-field-custom {
+    margin-bottom: 0;
+}
+
+form div.file-field .file-path-wrapper-margin-left {
+    margin-left: 1.05em;
+}
+
+/* -- Login: Submit Button -- */
+form button.btn-submit-custom {
+height: 3rem;
+    line-height: 3rem;
+    padding: 0 2em;
+    position: relative;
+    top: 1em;
+}
+
+/* -- Media Queries -- */
+

@@ -3,13 +3,13 @@
     'use strict';
 
     angular
-        .module('myGrubApp', ['ui.router', 'firebase'])
-        .controller('MyGrubAppCtrl', ['$firebaseAuth', MyGrubAppCtrl])
+        .module('myGrubApp', ['ui.router', 'firebase', 'wu.masonry'])
+        .controller('MyGrubAppCtrl', ['$firebaseAuth', '$state', MyGrubAppCtrl])
         .config(['$stateProvider', '$urlServiceProvider', '$qProvider', '$logProvider', uiRouterConfig])
-        .run(['$rootScope', '$state', '$transitions', '$firebaseAuth', 'authService', runConfig]);  
+        .run(['$q', '$rootScope', '$state', '$transitions', '$firebaseAuth', 'authService', runConfig]);  
 
     // myGrubAppCtrl controller
-    function MyGrubAppCtrl($firebaseAuth) {
+    function MyGrubAppCtrl($firebaseAuth, $state) {
         var vm = this;
         vm.login = function() {
             $firebaseAuth().$signInWithEmailAndPassword('jennikins813@yahoo.com', 'abc123jen')
@@ -18,6 +18,12 @@
                 });
         };
         vm.logout = function() {
+            $state.go('browse');
+            if ($firebaseAuth().$getAuth() === null) {
+                console.log('already logged out');
+                return false;
+            }
+
             var uid = $firebaseAuth().$getAuth().uid;
             var dataRef = firebase.database().ref('c_prvt/' + uid);
 
@@ -94,7 +100,8 @@
                                 return usr;
                             })
                             .catch(function(err) {
-                                // console.log('rejected isUserAuthenticated: ', err);
+                                // TODO: redirect to login/registration view
+                                console.log('rejected: ', err);
                                 $location.url('/home');
                                 $state.go('home');
                             });
@@ -117,6 +124,15 @@
 
                     }]
                 }
+            })
+            .state('loginRegistration', {
+                url: '/loginRegistration',
+                templateUrl: 'app/loginRegistration/loginRegistrationView.html',
+                controller: 'LoginRegistrationCtrl',
+                controllerAs: 'loginRegistrationVM'
+                // resolve: ['authService', function(authService) {
+                //     return true;
+                // }]
             });
 
         $urlServiceProvider
@@ -129,16 +145,25 @@
     }
 
     // run method configuration
-    function runConfig($rootScope, $state, $transitions, $firebaseAuth, authService) {
+    function runConfig($q, $rootScope, $state, $transitions, $firebaseAuth, authService) {
         
         // set user, if user exists, when user first visits application
         $rootScope.authObj = $firebaseAuth();
         $rootScope.authObj.$onAuthStateChanged(function(firebaseUser) {
             authService.setCurrentUser(firebaseUser);
-            // if (firebaseUser === null) {
+        });
+        
+        // setup so that an unauthenticated user navigating to /userProfile
+        // is redirected to the login/registration state without a
+        // Transition Rejection error in the console
+        $transitions.onStart({ to: 'userProfile' }, function(trans) {
+            console.log(trans);
+            // console.log(firebaseUser);
 
-            //     $state.go('home');
-            // }
+            return authService.isUserAuthenticated()
+                .catch(function() {
+                    return $state.target('browse');
+                });
         });
 
     }
