@@ -6,6 +6,6 @@ img/spain-madrid-tapas.jpg
 karma.conf.js
 seed.json
 npm-debug.log
-.sublime-project
-.sublime-workspace
+*.sublime-project
+*.sublime-workspace
 
