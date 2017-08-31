@@ -32,26 +32,10 @@
             return deferred.promise;
         }
 
-        // function isValidatedRW() {
-        //     var deferred = $q.defer();
-
-        //     // access all of user's private paths
-        //     if (user !== null) {
-        //         var aUserRef = firebase.database().ref('a_users/' + user.uid);
-        //         var aUserObj = $firebaseObject(aUserRef);
-
-        //         console.log(aUserObj);
-        //         deferred.resolve(aUserObj);
-        //     }
-
-        //     return deferred.promise;
-        // }
-
         return {
             setCurrentUser: setCurrentUser,
             getCurrentUser: getCurrentUser,
             isUserAuthenticated: isUserAuthenticated
-            // isValidatedRW: isValidatedRW
         }
     }
 
