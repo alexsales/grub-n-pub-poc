@@ -4,15 +4,31 @@
 
     angular
         .module('myGrubApp')
-        .controller('BrowseCtrl', ['publicData', BrowseCtrl]);
+        .controller('BrowseCtrl', ['$state', 'publicData', 'storageService', BrowseCtrl]);
 
 
-    function BrowseCtrl(publicData) {
+    function BrowseCtrl($state, publicData, storageService) {
         var vm = this;
 
         vm.hi = 'howdy browseCtrl';
         vm.usersList = publicData;
-        console.log(vm.usersList);  
+        console.log(vm.usersList);
+
+        vm.viewProfile = function(uid) {
+            console.log(uid);
+            storageService.cacheServe.put('userPublicUID', uid);
+            console.log(storageService.cacheServe);
+
+            storageService.sessionServe.uid = uid;
+            console.log(storageService.sessionServe);
+
+            $state.go('userProfile');
+
+            // TODO .. actually look into $cacheFactory
+            // set userPublicUID on dataService
+            // set userPublicUID on rootScope
+            // navigate to userPublicProfile, passing uid as paramater
+        }
 
         // function genBrick() {
         //     var height = ~~(Math.random() * 500) + 100;

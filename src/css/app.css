@@ -173,5 +173,32 @@ height: 3rem;
     top: 1em;
 }
 
+/* -- User Profile: Slider -- */
+div.slider .slides .slider-slides-margin {
+    background-color: #fff;
+}
+
+div.slider .slides .slider-slides-margin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.slider .slides .slider-img-width {
+    width: auto;
+    height: auto;
+    margin: 0;
+}
+
+/* -- User Profile: Hobbies -- */
+li.hobby-item {
+    display: inline-block;
+    padding: 0.25em 0.75em;
+    background-color: #598a4c;
+    color: #f5faac;
+    margin: 0 0.25em 0.25em 0;
+}
+
+
 /* -- Media Queries -- */
 

@@ -3,10 +3,10 @@
     'use strict';
 
     angular
-        .module('myGrubApp', ['ui.router', 'firebase', 'wu.masonry'])
+        .module('myGrubApp', ['ui.router', 'firebase', 'wu.masonry', 'ngStorage'])
         .controller('MyGrubAppCtrl', ['$firebaseAuth', '$state', MyGrubAppCtrl])
         .config(['$stateProvider', '$urlServiceProvider', '$qProvider', '$logProvider', uiRouterConfig])
-        .run(['$q', '$rootScope', '$state', '$transitions', '$firebaseAuth', 'authService', runConfig]);  
+        .run(['$q', '$rootScope', '$state', '$transitions', '$firebaseAuth', 'authService', 'dataService', 'storageService', runConfig]);  
 
     // myGrubAppCtrl controller
     function MyGrubAppCtrl($firebaseAuth, $state) {
@@ -51,46 +51,14 @@
                 resolve: {
                     publicData: ['dataService' , function(dataService) {
                         return dataService.getPublicData();
-                            // .then(function(res) {
-                            //     console.log('publicData resolve ' + res);
-                            //     return res;
-                            //     // vm.publicData = res;
-                            //     // console.log(vm.data);
-                            // });
                     }]
-                    // publicDataWithImages: ['dataService', 'publicData', function(dataService, publicData) {
-                    //     return dataService.getAndAddPublicUserImageData(publicData)
-                    //         .then(function(modifiedUsersList) {
-                    //             console.log(modifiedUsersList);
-
-                    //             // var usersList = [];
-                    //             // modifiedUsersList.forEach(function(user) {
-                    //             //     user.landscapeImgDownloadURL
-                    //             //         .then(function(url) {
-                    //             //             // console.log(url);
-                    //             //             user.landscapeImgDownloadURL = url;
-                    //             //         });
-                    //             //     user.portraitImgDownloadURL
-                    //             //         .then(function(url) {
-                    //             //             // console.log(url);
-                    //             //             user.portraitImgDownloadURL = url;
-                    //             //         });
-                    //             //     console.log(user);
-                    //             //     usersList.push(user);
-                    //             //     // $scope.$apply();
-                    //             // });
-                    //             // console.log(usersList);
-                    //             // return usersList;
-                    //             return modifiedUsersList;
-                    //         });
-                    // }]
                 }
             })
-            .state('userProfile', {
-                url: '/userProfile',
-                templateUrl: 'app/userProfile/userProfileView.html',
-                controller: 'UserProfileCtrl',
-                controllerAs: 'userProfileVM',
+            .state('myProfile', {
+                url: '/myProfile/{personId}',
+                templateUrl: 'app/myProfile/myProfileView.html',
+                controller: 'MyProfileCtrl',
+                controllerAs: 'MyProfileVM',
                 resolve: {
                     isUserAuthenticated: ['$q', '$state', '$location', 'authService', function($q, $state, $location, authService) {
 
@@ -102,27 +70,74 @@
                             .catch(function(err) {
                                 // TODO: redirect to login/registration view
                                 console.log('rejected: ', err);
-                                $location.url('/home');
-                                $state.go('home');
+                                return null;
+                                // $location.url('/loginRegistration');
+                                // $state.go('loginRegistration');
                             });
-
                     }],
                     authUserPrvtData: ['isUserAuthenticated', 'dataService', function(isUserAuthenticated, dataService) {
 
                         if (isUserAuthenticated) {
                             var uid = isUserAuthenticated.uid;
-                            var userDataPromise = dataService.getPrivateData(uid);
-                            console.log(userDataPromise);
+                            var myDataPromise = dataService.getPrivateData(uid);
+                            console.log(myDataPromise);
 
-                            userDataPromise.then(function(snapshot) {
+                            myDataPromise.then(function(snapshot) {
                                 console.log(snapshot);
                                 return snapshot;
                             });
 
-                            return userDataPromise;
+                            return myDataPromise;
                         }
-
                     }]
+                }
+            })
+            .state('userProfile', {
+                url: '/userProfile',
+                templateUrl: 'app/userProfile/userProfileView.html',
+                controller: 'UserProfileCtrl',
+                controllerAs: 'userProfileVM',
+                // params: {
+                //     userId: null
+                // },
+                resolve: {
+                    isUserAuthenticated: ['$q', '$state', '$location', 'authService', function($q, $state, $location, authService) {
+                        return authService.isUserAuthenticated()
+                            .then(function(usr) {
+                                // console.log('resolved isUserAuthenticated: ', usr);
+                                return usr;
+                            })
+                            .catch(function(warning) {
+                                // TODO: redirect to login/registration view
+                                console.log('warning on isUserAuthenticated; will still navigate to userProfile: ', warning);
+                                return null;
+                                // $location.url('/loginRegistration');
+                                // $state.go('loginRegistration');
+                            });
+                    }],
+                    userProfileData: ['storageService', 'dataService', function(storageService, dataService) {
+                        var uid = storageService.sessionServe.uid;
+
+                        return dataService.getUserData(uid);
+                    }]
+                    // setUserProfileUID: ['$transition$', 'dataService', function($transition$, dataService) {
+                    //     var uid = $transition$.params().userId;
+
+                    //     dataService.setUserPublicUID(uid);
+                    //     return true;
+                    // }],
+                    // getUserProfileData: ['$transition$', '$location', '$state', 'dataService', 'cacheService', function($transition$, $location, $state, dataService, cacheService) {
+
+                    //     return dataService.getUserData()
+                    //         .then(function(res) {
+                    //             console.log(res);
+                    //             return res;
+                    //         });
+                    //         // .catch(function(err) {
+                    //         //     console.log('Error within dataService.getUserData(): ' + err);
+                    //         //     // return $state.target('browse');
+                    //         // });
+                    // }]
                 }
             })
             .state('loginRegistration', {
@@ -145,7 +160,7 @@
     }
 
     // run method configuration
-    function runConfig($q, $rootScope, $state, $transitions, $firebaseAuth, authService) {
+    function runConfig($q, $rootScope, $state, $transitions, $firebaseAuth, authService, dataService, storageService) {
         
         // set user, if user exists, when user first visits application
         $rootScope.authObj = $firebaseAuth();
@@ -153,19 +168,61 @@
             authService.setCurrentUser(firebaseUser);
         });
         
+        $transitions.onStart({ to: 'userProfile' }, function(trans) {
+            console.log(trans);
+
+            if (!storageService.sessionServe.uid) {
+                return $state.target('browse');
+            }
+
+            // return dataService.doesUserUIDExist()
+            //     .catch(function() {
+            //         return $state.target('browse');
+            //     })
+        });
+
+
         // setup so that an unauthenticated user navigating to /userProfile
         // is redirected to the login/registration state without a
         // Transition Rejection error in the console
-        $transitions.onStart({ to: 'userProfile' }, function(trans) {
-            console.log(trans);
-            // console.log(firebaseUser);
+        // $transitions.onStart({ to: 'userProfile' }, function(trans) {
+        //     console.log(trans);
+        //     // console.log(firebaseUser);
 
-            return authService.isUserAuthenticated()
-                .catch(function() {
-                    return $state.target('browse');
-                });
-        });
+        //     return authService.isUserAuthenticated()
+        //         .catch(function() {
+        //             return $state.target('loginRegistration');
+        //         });
+        // });
 
+        // $transitions.onStart({ to: 'userProfile' }, function(trans) {
+        //     console.log('userProfile onStart: ', trans);
+        //     console.log('userProfile onStart params: ', trans.params());
+        //     var uid = null;
+        //     var uidRemote = trans.params().userId;
+        //     if (uidRemote !== null) {
+        //         uid = uidRemote;
+        //         console.log(uid);
+        //         return true;
+        //     }
+
+        //     return dataService.getUserPublicUID()
+        //         .then(function(res) {
+        //             console.log(res);
+        //         })
+        //         .catch(function(errRes) {
+        //             console.log(errRes);
+        //             return $state.target('browse');
+        //         });
+        //     // if (uid === null) {
+        //     //     // return $state.target('browse');
+        //     //     uid = dataService.getUserPublicUID();
+        //     //     console.log(uid);
+        //     //     if (uid === null) {
+        //     //         return $state.target('browse');
+        //     //     }
+        //     // }
+        // });
     }
 
 })();

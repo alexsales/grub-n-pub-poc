@@ -55,6 +55,7 @@
     "jquery": "^3.2.1",
     "materialize-clockpicker": "^1.0.1",
     "materialize-css": "^0.98.2",
+    "ngstorage": "^0.3.11",
     "webfontloader": "^1.6.27"
   },
   "devDependencies": {

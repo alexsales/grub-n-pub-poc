@@ -41,7 +41,7 @@
                     <ul id="nav-mobile" class="left hide-on-med-and-down">
                         <li><a ui-sref="browse">Browse (POO)'ers</a></li>
                         <li><a ui-sref="inbox">Inbox</a></li>
-                        <li><a ui-sref="userProfile">Profile</a></li>
+                        <li><a ui-sref="myProfile">myProfile</a></li>
                         <li><a ng-click="myGrubAppVM.login()">Login</a></li>
                         <li><a ng-click="myGrubAppVM.logout()">Logout</a></li>
                     </ul>
@@ -90,6 +90,7 @@
         <script src="/node_modules/materialize-css/dist/js/materialize.js"></script>
         <script src="/node_modules/angular-materialize/src/angular-materialize.js"></script>
         <script src="/node_modules/angular-materialize/js/materialize.clockpicker.js"></script>
+        <script src="/node_modules/ngstorage/ngStorage.js"></script>
 
         <!-- angular-masonry -->
         <script src="/node_modules/jquery-bridget/jquery-bridget.js"></script>
@@ -121,6 +122,7 @@
         <!-- services -->
         <script src="app/services/authService.js"></script>
         <script src="app/services/dataService.js"></script>
+        <script src="app/services/storageService.js"></script>
 
         <!-- ui-route controllers -->
         <script src="app/home/HomeCtrl.js"></script>        
