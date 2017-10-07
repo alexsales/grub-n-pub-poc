@@ -34,6 +34,7 @@ div.masonry-brick .zip--codes {
 div.card .card-action--align a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
     margin-right: 0;
     cursor: pointer;
+    color: #ff6f00;
 }
 
 blockquote {

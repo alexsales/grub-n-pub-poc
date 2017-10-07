@@ -27,12 +27,13 @@
                 <section>
                     <h5>interested in:</h5>
                     <ul>
-                        <li class="hobby-item" ng-repeat="hobby in userProfileVM.userHobbies">{{ hobby }}</li>
+                        <li class="hobby-item" ng-repeat="hobby in userProfileVM.userHobbies track by $index">{{ hobby }}</li>
                     </ul>
                     <h5>available on days:</h5>
-                    <ul>
+                    <!-- undecided: allow selection via specific day(s) selection or no selection via simple text description -->
+                    <!-- <ul>
                         <li class="days-available" ng-repeat=""></li>
-                    </ul>
+                    </ul> -->
                 </section>
                 <section
             </div>

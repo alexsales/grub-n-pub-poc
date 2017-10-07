@@ -36,7 +36,7 @@
         <![endif]-->
 
         <header>
-            <nav class="z-depth-0">
+            <nav class="z-depth-0 amber darken-4">
                 <div class="nav-wrapper container">
                     <ul id="nav-mobile" class="left hide-on-med-and-down">
                         <li><a ui-sref="browse">Browse (POO)'ers</a></li>
@@ -52,7 +52,7 @@
 
         <div ui-view></div>
 
-        <footer class="page-footer">
+        <footer class="page-footer amber darken-4">
             <div class="container">
                 <div class="row">
                     <div class="col l6 s12">
@@ -123,6 +123,10 @@
         <script src="app/services/authService.js"></script>
         <script src="app/services/dataService.js"></script>
         <script src="app/services/storageService.js"></script>
+
+        <!-- directives and directive controllers -->
+        <script src="app/directives/loginLogout/loginLogout.js"></script>
+        <script src="app/directives/loginLogout/LoginLogoutCtrl.js"></script>
 
         <!-- ui-route controllers -->
         <script src="app/home/HomeCtrl.js"></script>        
