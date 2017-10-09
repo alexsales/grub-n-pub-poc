@@ -40,10 +40,7 @@
                 <div class="nav-wrapper container">
                     <ul id="nav-mobile" class="left hide-on-med-and-down">
                         <li><a ui-sref="browse">Browse (POO)'ers</a></li>
-                        <li><a ui-sref="inbox">Inbox</a></li>
-                        <li><a ui-sref="myProfile">myProfile</a></li>
-                        <li><a ng-click="myGrubAppVM.login()">Login</a></li>
-                        <li><a ng-click="myGrubAppVM.logout()">Logout</a></li>
+                        <span gp-login-logout logged-in="myGrubAppVM.loggedIn"></span>
                     </ul>
                     <a ui-sref="home" class="brand-logo right mg-logo">LetsGrub</a>
                 </div>

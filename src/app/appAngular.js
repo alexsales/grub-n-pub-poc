@@ -4,33 +4,19 @@
 
     angular
         .module('myGrubApp', ['ui.router', 'firebase', 'wu.masonry', 'ngStorage'])
-        .controller('MyGrubAppCtrl', ['$firebaseAuth', '$state', MyGrubAppCtrl])
+        .controller('MyGrubAppCtrl', ['$rootScope', MyGrubAppCtrl])
         .config(['$stateProvider', '$urlServiceProvider', '$qProvider', '$logProvider', uiRouterConfig])
         .run(['$q', '$rootScope', '$state', '$transitions', '$firebaseAuth', 'authService', 'dataService', 'storageService', runConfig]);  
 
     // myGrubAppCtrl controller
-    function MyGrubAppCtrl($firebaseAuth, $state) {
+    function MyGrubAppCtrl($rootScope) {
         var vm = this;
-        vm.login = function() {
-            $firebaseAuth().$signInWithEmailAndPassword('jennikins813@yahoo.com', 'abc123jen')
-                .catch(function(error) {
-                    console.log('Authentication failed: ', error);
-                });
-        };
-        vm.logout = function() {
-            $state.go('browse');
-            if ($firebaseAuth().$getAuth() === null) {
-                console.log('already logged out');
-                return false;
-            }
+        vm.loggedIn = $rootScope.userLoggedIn;
 
-            var uid = $firebaseAuth().$getAuth().uid;
-            var dataRef = firebase.database().ref('c_prvt/' + uid);
-
-            dataRef.off();
-            $firebaseAuth().$signOut();
-            console.log($firebaseAuth().$getAuth());
-        };
+        $rootScope.$watch(vm.loggedIn, function(newVal) {
+            console.log('newVal: ', newVal);
+        });
+        console.log('vm.loggedIn: ', vm.loggedIn);
     }
 
     // state configurations
@@ -163,9 +149,28 @@
     function runConfig($q, $rootScope, $state, $transitions, $firebaseAuth, authService, dataService, storageService) {
         
         // set user, if user exists, when user first visits application
+        $rootScope.userLoggedIn = null;
         $rootScope.authObj = $firebaseAuth();
         $rootScope.authObj.$onAuthStateChanged(function(firebaseUser) {
             authService.setCurrentUser(firebaseUser);
+            $rootScope.$watch(MyGrubAppCtrl.loggedIn, function() {
+                var user = authService.getCurrentUser();
+                if (user) {
+                    $rootScope.userLoggedIn = true;
+                    // $rootScope.$digest();
+                    console.log($rootScope.userLoggedIn);
+                }
+                if (!user) {
+                    $rootScope.userLoggedIn = false;
+                //     $rootScope.$digest();
+                    console.log($rootScope.userLoggedIn);
+                }
+            });
+
+            // $rootScope.$watch(MyGrubAppCtrl.loggedIn, function(newVal) {
+            //     console.log('my grub app changed', authService.getCurrentUser());
+
+            // });
         });
         
         $transitions.onStart({ to: 'userProfile' }, function(trans) {
