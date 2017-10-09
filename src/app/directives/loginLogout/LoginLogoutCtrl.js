@@ -4,36 +4,19 @@
 
     angular
         .module('myGrubApp')
-        .controller('LoginLogoutCtrl', ['$scope', '$firebaseAuth', '$state', 'authService', LoginLogoutCtrl]);
+        .controller('LoginLogoutCtrl', ['$firebaseAuth', '$state', 'authService', LoginLogoutCtrl]);
 
-    function LoginLogoutCtrl($scope, $firebaseAuth, $state, authService) {
-        $('.modal').modal({
-            dismissible: true,
-            opacity: .5,
-            inDuration: 300,
-            outDuration: 200,
-            startingTop: '4%',
-            endingTop: '10%',
-            ready: function(modal, trigger) { 
-                alert("Ready");
-                console.log(modal, trigger);
-            },
-            complete: function() {
-                alert('Closed');
-            }
-        });
-
+    function LoginLogoutCtrl($firebaseAuth, $state, authService) {
+        var user = null;
         var vm = this;
-        // console.log(vm);
+
+        vm.userLoggedIn = null;
         vm.login = function() {
             $firebaseAuth().$signInWithEmailAndPassword('jennikins813@yahoo.com', 'abc123jen')
                 .then(function(user) {
-                        console.log('signed in: ', user);
-                        vm.loggedIn = true;
-                        // console.log(vm.loggedIn);
-
-                        // trigger for logged-in-modal
-                        $('#logged-in-modal').modal('open');
+                        // console.log('signed in: ', user);
+                        vm.userLoggedIn = true;
+                        Materialize.toast('You are now logged in!', 2000);
                 })
                 .catch(function(error) {
                     console.log('Authentication failed: ', error);
@@ -52,14 +35,23 @@
             dataRef.off();
             $firebaseAuth().$signOut()
                 .then(function() {
-                        console.log('signed out user: ', uid);
-                        vm.loggedIn = false;
-                        // console.log(vm.loggedIn);
+                        // console.log('signed out user: ', uid);
+                        vm.userLoggedIn = false;
                 })
                 .catch(function(error) {
                     console.log('Logout failed: ', error);
                 });
         };
+
+        // initial userLoggedIn check
+        user = authService.isUserAuthenticated()
+            .then(function() {
+                console.log('yes');
+                vm.userLoggedIn = true;
+            }, function() {
+                console.log('no');
+                vm.userLoggedIn = false;
+            });
     }
 
 })();

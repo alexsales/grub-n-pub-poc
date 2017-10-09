@@ -1,18 +1,10 @@
 <span>
-    <span ng-if="loginLogoutVM.loggedIn">
+    <span ng-if="loginLogoutVM.userLoggedIn">
         <li><a ui-sref="inbox">Inbox</a></li>
         <li><a ui-sref="myProfile">myProfile</a></li>
         <li class="nav-logout"><a ng-click="loginLogoutVM.logout()">Logout</a></li>
     </span>
-    <span ng-if="!loginLogoutVM.loggedIn">
+    <span ng-if="!loginLogoutVM.userLoggedIn">
         <li class="nav-login"><a ng-click="loginLogoutVM.login()">Login</a></li>
     </span>
-
-    <aside>
-        <div id="logged-in-modal" class="modal">
-            <div class="modal-content">
-                <h4>logged in</h4>
-            </div>
-        </div>
-    </aside>
 </span>

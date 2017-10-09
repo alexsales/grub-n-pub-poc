@@ -15,13 +15,7 @@
             bindToController: {
                 loggedIn: '='
             },
-            // transclude: 'element',
             templateUrl: 'app/directives/loginLogout/loginLogoutView.html',
-            // link: function(scope, elem, attrs, ctrl, transclude) {
-            //     console.log(scope);
-            //     console.log(attrs);
-
-            // },
             restrict: 'EA'
         };
     }

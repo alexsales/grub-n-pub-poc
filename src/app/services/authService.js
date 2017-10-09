@@ -20,14 +20,18 @@
 
         function isUserAuthenticated() {
             var deferred = $q.defer();
+            var authObj = $firebaseAuth();
 
-            if (user !== null) {
-                $log.info('YES, user IS authenticated');
-                deferred.resolve(user);
-            } else {
-                $log.warn('NO, user is NOT authenticated');
-                deferred.reject('user not logged in');
-            }
+            authObj.$onAuthStateChanged(function(firebaseUser) {
+                    if (firebaseUser) {
+                        $log.info('YES, user IS authenticated');
+                        deferred.resolve(firebaseUser);
+                    }
+                    if (!firebaseUser) {
+                        $log.warn('NO, user is NOT authenticated');
+                        deferred.reject('user not logged in');
+                    }
+            });
 
             return deferred.promise;
         }

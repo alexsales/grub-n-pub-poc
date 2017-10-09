@@ -11,12 +11,6 @@
     // myGrubAppCtrl controller
     function MyGrubAppCtrl($rootScope) {
         var vm = this;
-        vm.loggedIn = $rootScope.userLoggedIn;
-
-        $rootScope.$watch(vm.loggedIn, function(newVal) {
-            console.log('newVal: ', newVal);
-        });
-        console.log('vm.loggedIn: ', vm.loggedIn);
     }
 
     // state configurations
@@ -50,7 +44,6 @@
 
                         return authService.isUserAuthenticated()
                             .then(function(usr) {
-                                // console.log('resolved isUserAuthenticated: ', usr);
                                 return usr;
                             })
                             .catch(function(err) {
@@ -90,7 +83,6 @@
                     isUserAuthenticated: ['$q', '$state', '$location', 'authService', function($q, $state, $location, authService) {
                         return authService.isUserAuthenticated()
                             .then(function(usr) {
-                                // console.log('resolved isUserAuthenticated: ', usr);
                                 return usr;
                             })
                             .catch(function(warning) {
@@ -131,9 +123,6 @@
                 templateUrl: 'app/loginRegistration/loginRegistrationView.html',
                 controller: 'LoginRegistrationCtrl',
                 controllerAs: 'loginRegistrationVM'
-                // resolve: ['authService', function(authService) {
-                //     return true;
-                // }]
             });
 
         $urlServiceProvider
@@ -149,28 +138,9 @@
     function runConfig($q, $rootScope, $state, $transitions, $firebaseAuth, authService, dataService, storageService) {
         
         // set user, if user exists, when user first visits application
-        $rootScope.userLoggedIn = null;
         $rootScope.authObj = $firebaseAuth();
         $rootScope.authObj.$onAuthStateChanged(function(firebaseUser) {
             authService.setCurrentUser(firebaseUser);
-            $rootScope.$watch(MyGrubAppCtrl.loggedIn, function() {
-                var user = authService.getCurrentUser();
-                if (user) {
-                    $rootScope.userLoggedIn = true;
-                    // $rootScope.$digest();
-                    console.log($rootScope.userLoggedIn);
-                }
-                if (!user) {
-                    $rootScope.userLoggedIn = false;
-                //     $rootScope.$digest();
-                    console.log($rootScope.userLoggedIn);
-                }
-            });
-
-            // $rootScope.$watch(MyGrubAppCtrl.loggedIn, function(newVal) {
-            //     console.log('my grub app changed', authService.getCurrentUser());
-
-            // });
         });
         
         $transitions.onStart({ to: 'userProfile' }, function(trans) {
@@ -179,13 +149,7 @@
             if (!storageService.sessionServe.uid) {
                 return $state.target('browse');
             }
-
-            // return dataService.doesUserUIDExist()
-            //     .catch(function() {
-            //         return $state.target('browse');
-            //     })
         });
-
 
         // setup so that an unauthenticated user navigating to /userProfile
         // is redirected to the login/registration state without a
