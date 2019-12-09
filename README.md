@@ -6,13 +6,11 @@ Never eat alone again! An app to help you find others to dine with and chat abou
 
 Step 1. Install into your local directory (e.g. `git clone https://github.com/as-staging/grub-n-pub-staging.git`)
 
-Step 2. CD into the `/grub-n-pub-staging/src` directory
-
 Step 2. Install dependencies (e.g. `npm install` if using NPM)
 
 Step 3. Start a local web server (e.g. via the Mac Terminal, `python -m SimpleHTTPServer 8000`)
 
-Step 4. Open browser window and go to url `http://localhost:8000/src/`
+Step 4. Open browser window and go to url (making sure you're in the `/src` directory) `http://localhost:8000/src/`
 
 ## login/password (for testing purposes)
 
