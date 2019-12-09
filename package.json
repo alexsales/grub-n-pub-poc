@@ -1,5 +1,5 @@
 {
-  "homepage": "https://alexsales.github.io/grub-n-pub-poc/src/",
+  "homepage": "https://alexsales.github.io/grub-n-pub-poc/",
   "name": "grub-n-pub",
   "version": "1.0.0",
   "babel": {
@@ -17,9 +17,7 @@
     "babelBrowseCtrl": "babel ./src/app/appAngular.js -o ./src/app/appAngular-transpiled.js",
     "webpackBrowseCtrl": "webpack ./src/app/appAngular-transpiled.js ./src/app/appAngular-bundle.js",
     "transpileAndBundle": "npm run babelBrowseCtrl && npm run webpackBrowseCtrl",
-    "watch": "npm-watch",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "watch": "npm-watch"
   },
   "keywords": [
     "Googla",
