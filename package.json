@@ -1,5 +1,6 @@
 {
-  "name": "lets-grub-club",
+  "homepage": "https://alexsales.github.io/grub-n-pub-poc/src/",
+  "name": "grub-n-pub",
   "version": "1.0.0",
   "babel": {
     "presets": [
@@ -16,7 +17,9 @@
     "babelBrowseCtrl": "babel ./src/app/appAngular.js -o ./src/app/appAngular-transpiled.js",
     "webpackBrowseCtrl": "webpack ./src/app/appAngular-transpiled.js ./src/app/appAngular-bundle.js",
     "transpileAndBundle": "npm run babelBrowseCtrl && npm run webpackBrowseCtrl",
-    "watch": "npm-watch"
+    "watch": "npm-watch",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "keywords": [
     "Googla",
@@ -61,6 +64,7 @@
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
+    "gh-pages": "^2.1.1",
     "graceful-fs": "^4.1.11",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^3.2.0",
