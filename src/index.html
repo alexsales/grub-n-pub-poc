@@ -1,134 +1,164 @@
-<!doctype html>
+<!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Let's Grub Club</title>
-        <meta name="description" content="Never eat alone again! An app to help you find others to dine with and chat about random stuff; no strings attached, just good company.">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
-        <link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.css">
-        <link rel="stylesheet" href="css/normalize.min.css">
-        <link rel="stylesheet" href="/node_modules/materialize-css/dist/css/materialize.css">
-        <link rel="stylesheet" href="/node_modules/angular-materialize/css/materialize.clockpicker.css">
-        <link rel="stylesheet" href="css/h5bp-main.css">
-        <link rel="stylesheet" href="css/app.css">
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Let's Grub Club</title>
+    <meta
+      name="description"
+      content="Never eat alone again! An app to help you find others to dine with and chat about random stuff; no strings attached, just good company."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <script src="/node_modules/webfontloader/webfontloader.js"></script>
-        <script>
-            WebFont.load({
-                google: {
-                    families: ['Droid Sans', 'Playfair Display', 'Playfair', 'Roboto', 'Roboto Condensed']
-                }
-            });
-        </script>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="/jsVendors/jquery-1.11.2.min.js"><\/script>')</script>
-        <script src="/jsVendors/modernizr-2.8.3.min.js"></script>
-    </head>
-    <body ng-app="myGrubApp" ng-controller="MyGrubAppCtrl as myGrubAppVM">
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link
+      rel="stylesheet"
+      href="/node_modules/font-awesome/css/font-awesome.css"
+    />
+    <link rel="stylesheet" href="css/normalize.min.css" />
+    <link
+      rel="stylesheet"
+      href="/node_modules/materialize-css/dist/css/materialize.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/node_modules/angular-materialize/css/materialize.clockpicker.css"
+    />
+    <link rel="stylesheet" href="css/h5bp-main.css" />
+    <link rel="stylesheet" href="css/app.css" />
 
-        <header>
-            <nav class="z-depth-0 amber darken-4">
-                <div class="nav-wrapper container">
-                    <ul id="nav-mobile" class="left hide-on-med-and-down">
-                        <li><a ui-sref="browse">Browse (POO)'ers</a></li>
-                        <span gp-login-logout logged-in="myGrubAppVM.loggedIn"></span>
-                    </ul>
-                    <a ui-sref="home" class="brand-logo right mg-logo">LetsGrub</a>
-                </div>
-            </nav>
-        </header>
+    <script src="/node_modules/webfontloader/webfontloader.js"></script>
+    <script>
+      WebFont.load({
+        google: {
+          families: [
+            'Droid Sans',
+            'Playfair Display',
+            'Playfair',
+            'Roboto',
+            'Roboto Condensed'
+          ]
+        }
+      });
+    </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+      window.jQuery ||
+        document.write(
+          '<script src="/jsVendors/jquery-1.11.2.min.js"><\/script>'
+        );
+    </script>
+    <script src="/jsVendors/modernizr-2.8.3.min.js"></script>
+  </head>
+  <body ng-app="myGrubApp" ng-controller="MyGrubAppCtrl as myGrubAppVM">
+    <!--[if lt IE 8]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="http://browsehappy.com/">upgrade your browser</a> to improve
+        your experience.
+      </p>
+    <![endif]-->
 
-        <div ui-view></div>
+    <header>
+      <nav class="z-depth-0 amber darken-4">
+        <div class="nav-wrapper container">
+          <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <li><a ui-sref="browse">Browse (GRUB)'ers</a></li>
+            <span gp-login-logout logged-in="myGrubAppVM.loggedIn"></span>
+          </ul>
+          <a ui-sref="home" class="brand-logo right mg-logo">LetsGrub</a>
+        </div>
+      </nav>
+    </header>
 
-        <footer class="page-footer amber darken-4">
-            <div class="container">
-                <div class="row">
-                    <div class="col l6 s12">
-                        <h5 class="white-text">Footer Content</h5>
-                        <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-                    </div>
-                    <div class="col l4 offset-l2 s12">
-                        <h5 class="white-text">Links</h5>
-                        <ul>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-copyright">
-                <div class="container">
-                    © 2014 Copyright Text
-                    <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-                </div>
-            </div>
-        </footer>
+    <div ui-view></div>
 
+    <footer class="page-footer amber darken-4">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Footer Content</h5>
+            <p class="grey-text text-lighten-4">
+              You can use rows and columns here to organize your footer content.
+            </p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Links</h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          © 2017 Copyright Text
+          <!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
+        </div>
+      </div>
+    </footer>
 
-        <script src="/node_modules/angular/angular.js"></script>
-        <script src="/node_modules/angular-animate/angular-animate.js"></script>
-        <script src="/node_modules/angular-aria/angular-aria.js"></script>
-        <script src="/node_modules/angular-messages/angular-messages.js"></script>
-        <script src="/node_modules/angular-mocks/angular-mocks.js"></script>
-        <script src="/node_modules/angular-scroll/angular-scroll.js"></script>
-        <script src="/node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/node_modules/angular/angular.js"></script>
+    <script src="/node_modules/angular-animate/angular-animate.js"></script>
+    <script src="/node_modules/angular-aria/angular-aria.js"></script>
+    <script src="/node_modules/angular-messages/angular-messages.js"></script>
+    <script src="/node_modules/angular-mocks/angular-mocks.js"></script>
+    <script src="/node_modules/angular-scroll/angular-scroll.js"></script>
+    <script src="/node_modules/@uirouter/angularjs/release/angular-ui-router.js"></script>
 
-        <script src="/node_modules/materialize-css/dist/js/materialize.js"></script>
-        <script src="/node_modules/angular-materialize/src/angular-materialize.js"></script>
-        <script src="/node_modules/angular-materialize/js/materialize.clockpicker.js"></script>
-        <script src="/node_modules/ngstorage/ngStorage.js"></script>
+    <script src="/node_modules/materialize-css/dist/js/materialize.js"></script>
+    <script src="/node_modules/angular-materialize/src/angular-materialize.js"></script>
+    <script src="/node_modules/angular-materialize/js/materialize.clockpicker.js"></script>
+    <script src="/node_modules/ngstorage/ngStorage.js"></script>
 
-        <!-- angular-masonry -->
-        <script src="/node_modules/jquery-bridget/jquery-bridget.js"></script>
-        <script src="/node_modules/get-size/get-size.js"></script>
-        <script src="/node_modules/ev-emitter/ev-emitter.js"></script>
-        <script src="/node_modules/desandro-matches-selector/matches-selector.js"></script>
-        <script src="/node_modules/fizzy-ui-utils/utils.js"></script>
+    <!-- angular-masonry -->
+    <script src="/node_modules/jquery-bridget/jquery-bridget.js"></script>
+    <script src="/node_modules/get-size/get-size.js"></script>
+    <script src="/node_modules/ev-emitter/ev-emitter.js"></script>
+    <script src="/node_modules/desandro-matches-selector/matches-selector.js"></script>
+    <script src="/node_modules/fizzy-ui-utils/utils.js"></script>
 
-        <script src="/node_modules/outlayer/item.js"></script>
-        <script src="/node_modules/outlayer/outlayer.js"></script>
-        <script src="/node_modules/masonry-layout/masonry.js"></script>
-        <script src="/node_modules/imagesloaded/imagesloaded.js"></script>
-        <script src="/node_modules/angular-masonry/angular-masonry.js"></script>
+    <script src="/node_modules/outlayer/item.js"></script>
+    <script src="/node_modules/outlayer/outlayer.js"></script>
+    <script src="/node_modules/masonry-layout/masonry.js"></script>
+    <script src="/node_modules/imagesloaded/imagesloaded.js"></script>
+    <script src="/node_modules/angular-masonry/angular-masonry.js"></script>
 
-        <!-- firebase and angularfire -->
-        <script src="/node_modules/firebase/firebase.js"></script>
-        <script src="/node_modules/firebase/firebase-app.js"></script>
-        <script src="/node_modules/firebase/firebase-auth.js"></script>
-        <script src="/node_modules/firebase/firebase-database.js"></script>
-        <script src="/node_modules/firebase/firebase-messaging.js"></script>
-        <script src="/node_modules/firebase/firebase-storage.js"></script>
-        <script src="/node_modules/angularfire/dist/angularfire.js"></script>
-        <script src="/jsVendors/firebase-init.js"></script>
+    <!-- firebase and angularfire -->
+    <script src="/node_modules/firebase/firebase.js"></script>
+    <script src="/node_modules/firebase/firebase-app.js"></script>
+    <script src="/node_modules/firebase/firebase-auth.js"></script>
+    <script src="/node_modules/firebase/firebase-database.js"></script>
+    <script src="/node_modules/firebase/firebase-messaging.js"></script>
+    <script src="/node_modules/firebase/firebase-storage.js"></script>
+    <script src="/node_modules/angularfire/dist/angularfire.js"></script>
+    <script src="/jsVendors/firebase-init.js"></script>
 
-        <!-- custom scripts -->
-        <script src="app/mainVanilla.js"></script>
-        <script src="app/appAngular.js"></script>
+    <!-- custom scripts -->
+    <script src="app/mainVanilla.js"></script>
+    <script src="app/appAngular.js"></script>
 
-        <!-- services -->
-        <script src="app/services/authService.js"></script>
-        <script src="app/services/dataService.js"></script>
-        <script src="app/services/storageService.js"></script>
+    <!-- services -->
+    <script src="app/services/authService.js"></script>
+    <script src="app/services/dataService.js"></script>
+    <script src="app/services/storageService.js"></script>
 
-        <!-- directives and directive controllers -->
-        <script src="app/directives/loginLogout/loginLogout.js"></script>
-        <script src="app/directives/loginLogout/LoginLogoutCtrl.js"></script>
+    <!-- directives and directive controllers -->
+    <script src="app/directives/loginLogout/loginLogout.js"></script>
+    <script src="app/directives/loginLogout/LoginLogoutCtrl.js"></script>
 
-        <!-- ui-route controllers -->
-        <script src="app/home/HomeCtrl.js"></script>        
-        <script src="app/userProfile/UserProfileCtrl.js"></script>        
-        <script src="app/browse/BrowseCtrl.js"></script>        
-        <script src="app/loginRegistration/LoginRegistrationCtrl.js"></script>        
-    </body>
+    <!-- ui-route controllers -->
+    <script src="app/home/HomeCtrl.js"></script>
+    <script src="app/userProfile/UserProfileCtrl.js"></script>
+    <script src="app/browse/BrowseCtrl.js"></script>
+    <script src="app/loginRegistration/LoginRegistrationCtrl.js"></script>
+  </body>
 </html>

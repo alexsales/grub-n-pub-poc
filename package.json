@@ -40,6 +40,7 @@
   "author": "Alex Sales <alexsales@sbcglobal.net",
   "license": "MIT",
   "dependencies": {
+    "@uirouter/angularjs": "^1.0.7",
     "angular": "^1.6.4",
     "angular-animate": "^1.6.4",
     "angular-aria": "^1.6.4",
@@ -48,7 +49,6 @@
     "angular-messages": "^1.6.4",
     "angular-mocks": "^1.6.4",
     "angular-scroll": "^1.0.1",
-    "@uirouter/angularjs": "^1.0.7",
     "angularfire": "^2.3.0",
     "firebase": "^3.9.0",
     "font-awesome": "^4.7.0",
